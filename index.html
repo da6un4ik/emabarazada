@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Embarazada en español — испанский для беременности и родов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream:   #FDFAF7;
+    --sand:    #F0EAE3;
+    --terr:    #C4513A;
+    --terr-dk: #9E3D28;
+    --terr-lt: #F5E6E2;
+    --ink:     #1A1A18;
+    --mid:     #6B6862;
+    --border:  #E0D8D0;
+    --sage:    #5A7A5E;
+    --sage-lt: #EAF0EB;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(253,250,247,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5vw;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-style: italic; font-size: 18px;
+    color: var(--terr); letter-spacing: 0.01em;
+  }
+  .nav-cta {
+    background: var(--terr); color: #fff;
+    border: none; border-radius: 6px;
+    padding: 8px 20px; font-size: 14px; font-weight: 500;
+    cursor: pointer; font-family: 'Inter', sans-serif;
+    text-decoration: none; display: inline-block;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--terr-dk); }
+
+  /* HERO */
+  .hero {
+    max-width: 1100px; margin: 0 auto;
+    padding: 80px 5vw 60px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  }
+
+  .hero-eyebrow {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--terr);
+    margin-bottom: 20px;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 5vw, 58px);
+    line-height: 1.1; font-weight: 700;
+    color: var(--ink); margin-bottom: 12px;
+  }
+  .hero-title em {
+    font-style: italic; color: var(--terr);
+  }
+  .hero-sub {
+    font-size: 17px; color: var(--mid);
+    line-height: 1.65; margin-bottom: 36px;
+    max-width: 440px;
+  }
+
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+  .btn-primary {
+    background: var(--terr); color: #fff;
+    border: none; border-radius: 8px;
+    padding: 15px 32px; font-size: 16px; font-weight: 600;
+    cursor: pointer; font-family: 'Inter', sans-serif;
+    text-decoration: none; display: inline-block;
+    transition: background 0.2s, transform 0.1s;
+    letter-spacing: 0.01em;
+  }
+  .btn-primary:hover { background: var(--terr-dk); transform: translateY(-1px); }
+  .btn-primary:active { transform: scale(0.99); }
+
+  .btn-ghost {
+    background: transparent; color: var(--mid);
+    border: 1.5px solid var(--border); border-radius: 8px;
+    padding: 14px 24px; font-size: 15px; font-weight: 500;
+    cursor: pointer; font-family: 'Inter', sans-serif;
+    text-decoration: none; display: inline-block;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--mid); color: var(--ink); }
+
+  .hero-trust {
+    margin-top: 28px;
+    display: flex; gap: 24px; flex-wrap: wrap;
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 13px; color: var(--mid);
+  }
+  .trust-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sage); flex-shrink: 0; }
+
+  /* FLIP CARD DEMO */
+  .hero-visual {
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .demo-label {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--mid);
+    margin-bottom: 4px; text-align: center;
+  }
+  .flip-card {
+    perspective: 1000px;
+    cursor: pointer;
+  }
+  .flip-inner {
+    position: relative; width: 100%; height: 120px;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 14px;
+  }
+  .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+
+  .flip-front, .flip-back {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+    border-radius: 14px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 20px 24px;
+  }
+  .flip-front {
+    background: var(--sand);
+    border: 1.5px solid var(--border);
+  }
+  .flip-back {
+    background: var(--terr-lt);
+    border: 1.5px solid #E8C4BB;
+    transform: rotateY(180deg);
+  }
+
+  .flip-lang {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--mid);
+    margin-bottom: 8px;
+  }
+  .flip-phrase {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 600;
+    color: var(--ink); text-align: center; line-height: 1.25;
+  }
+  .flip-pron { font-size: 12px; color: var(--mid); margin-top: 6px; font-style: italic; }
+  .flip-ru { font-size: 18px; color: var(--terr-dk); font-weight: 500; text-align: center; }
+
+  .flip-hint {
+    text-align: center; font-size: 12px; color: var(--mid);
+    margin-top: 8px;
+  }
+
+  .mini-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 4px; }
+  .mini-card {
+    background: var(--sand); border: 1px solid var(--border);
+    border-radius: 10px; padding: 12px 14px;
+  }
+  .mini-es { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+  .mini-ru { font-size: 12px; color: var(--mid); }
+
+  /* SECTION STYLES */
+  section { padding: 64px 5vw; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .s-eyebrow {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--terr);
+    margin-bottom: 16px;
+  }
+  .s-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 700; line-height: 1.2;
+    color: var(--ink); margin-bottom: 16px;
+  }
+  .s-sub {
+    font-size: 17px; color: var(--mid);
+    line-height: 1.65; max-width: 560px;
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--ink);
+    padding: 36px 5vw;
+  }
+  .stats-bar .section-inner {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0; text-align: center;
+  }
+  .stat-item {
+    padding: 0 20px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; font-weight: 700; color: var(--terr-lt);
+    line-height: 1;
+  }
+  .stat-label { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 6px; }
+
+  /* FOR WHOM */
+  .for-whom-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 20px; margin-top: 40px;
+  }
+  .whom-card {
+    background: var(--sand); border-radius: 14px;
+    padding: 28px 24px; border: 1px solid var(--border);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .whom-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+  .whom-icon {
+    font-size: 28px; margin-bottom: 14px; display: block;
+  }
+  .whom-title { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+  .whom-desc { font-size: 14px; color: var(--mid); line-height: 1.6; }
+
+  /* CONTENTS */
+  .contents-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 40px; margin-top: 48px; align-items: start;
+  }
+  .chapter-list { display: flex; flex-direction: column; gap: 12px; }
+  .chapter-item {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 16px 18px; border-radius: 10px;
+    border: 1px solid var(--border); background: #fff;
+    cursor: pointer; transition: border-color 0.2s, background 0.2s;
+  }
+  .chapter-item:hover { border-color: var(--terr); background: var(--terr-lt); }
+  .chapter-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; font-weight: 700; color: var(--terr);
+    line-height: 1; min-width: 28px;
+  }
+  .chapter-text {}
+  .chapter-title { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+  .chapter-desc { font-size: 13px; color: var(--mid); }
+
+  .contents-aside { position: sticky; top: 80px; }
+  .contents-card {
+    background: var(--ink); border-radius: 16px;
+    padding: 32px; color: #fff;
+  }
+  .cc-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-style: italic;
+    margin-bottom: 20px; color: #fff; line-height: 1.3;
+  }
+  .cc-items { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+  .cc-item {
+    display: flex; gap: 10px; align-items: flex-start;
+    font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.5;
+  }
+  .cc-check { color: #7EC8A0; font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .cc-pages { font-size: 12px; color: rgba(255,255,255,0.45); margin-bottom: 24px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px; }
+
+  /* DEMO BLOCK */
+  .demo-section { background: var(--sand); }
+  .phrases-demo {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 12px; margin-top: 40px;
+  }
+  .phrase-row {
+    background: #fff; border-radius: 10px;
+    padding: 16px 20px; border: 1px solid var(--border);
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .pr-es { font-size: 15px; font-weight: 600; color: var(--ink); }
+  .pr-pron { font-size: 12px; color: var(--mid); font-style: italic; }
+  .pr-ru { font-size: 13px; color: var(--terr-dk); }
+  .pr-tag {
+    display: inline-block; font-size: 11px;
+    background: var(--terr-lt); color: var(--terr);
+    border-radius: 4px; padding: 2px 8px;
+    margin-top: 4px; font-weight: 500;
+  }
+
+  /* TESTIMONIALS */
+  .reviews-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 20px; margin-top: 40px;
+  }
+  .review-card {
+    background: #fff; border-radius: 14px;
+    padding: 24px; border: 1px solid var(--border);
+  }
+  .review-stars { color: var(--terr); font-size: 16px; margin-bottom: 14px; letter-spacing: 2px; }
+  .review-text {
+    font-size: 14px; color: var(--mid); line-height: 1.7;
+    font-style: italic; margin-bottom: 16px;
+  }
+  .review-text::before { content: '\201C'; }
+  .review-text::after  { content: '\201D'; }
+  .review-author { display: flex; align-items: center; gap: 10px; }
+  .review-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--terr-lt); display: flex;
+    align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 600; color: var(--terr);
+  }
+  .review-name { font-size: 13px; font-weight: 600; color: var(--ink); }
+  .review-where { font-size: 12px; color: var(--mid); }
+
+  /* PRICING */
+  .pricing-section { background: var(--sand); }
+  .pricing-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 20px; margin-top: 48px; align-items: start;
+  }
+  .price-card-new {
+    background: #fff; border-radius: 16px;
+    padding: 32px 28px; border: 1.5px solid var(--border);
+    transition: transform 0.2s;
+  }
+  .price-card-new:hover { transform: translateY(-4px); }
+  .price-card-new.highlight {
+    border-color: var(--terr);
+    background: var(--ink); color: #fff;
+    position: relative;
+  }
+  .price-badge-new {
+    position: absolute; top: -14px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--terr); color: #fff;
+    font-size: 12px; font-weight: 600; padding: 4px 16px;
+    border-radius: 20px; white-space: nowrap;
+    letter-spacing: 0.04em;
+  }
+  .pc-name {
+    font-size: 14px; font-weight: 500; color: var(--mid);
+    margin-bottom: 8px;
+  }
+  .highlight .pc-name { color: rgba(255,255,255,0.6); }
+  .pc-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px; font-weight: 700;
+    line-height: 1; margin-bottom: 4px;
+    color: var(--ink);
+  }
+  .highlight .pc-price { color: var(--terr-lt); }
+  .pc-per { font-size: 13px; color: var(--mid); margin-bottom: 24px; }
+  .highlight .pc-per { color: rgba(255,255,255,0.5); }
+
+  .pc-features { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+  .pc-feature {
+    display: flex; gap: 10px; align-items: flex-start;
+    font-size: 14px; color: var(--mid); line-height: 1.5;
+  }
+  .highlight .pc-feature { color: rgba(255,255,255,0.75); }
+  .pc-check { color: var(--sage); font-weight: 600; flex-shrink: 0; }
+  .highlight .pc-check { color: #7EC8A0; }
+
+  .btn-buy {
+    display: block; width: 100%; text-align: center;
+    padding: 14px; border-radius: 8px; font-size: 15px;
+    font-weight: 600; cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    text-decoration: none; transition: all 0.2s;
+    border: none;
+  }
+  .btn-buy-outline {
+    background: transparent; color: var(--terr);
+    border: 1.5px solid var(--terr);
+  }
+  .btn-buy-outline:hover { background: var(--terr-lt); }
+  .btn-buy-fill {
+    background: var(--terr); color: #fff;
+  }
+  .btn-buy-fill:hover { background: var(--terr-dk); transform: translateY(-1px); }
+  .btn-buy-white {
+    background: #fff; color: var(--ink);
+  }
+  .btn-buy-white:hover { background: var(--terr-lt); }
+
+  /* FAQ */
+  .faq-list { max-width: 680px; margin: 40px auto 0; }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+  }
+  .faq-q {
+    width: 100%; text-align: left; background: none; border: none;
+    padding: 22px 0; font-size: 16px; font-weight: 500;
+    color: var(--ink); cursor: pointer; display: flex;
+    justify-content: space-between; align-items: center; gap: 16px;
+    font-family: 'Inter', sans-serif;
+  }
+  .faq-q:hover { color: var(--terr); }
+  .faq-icon { font-size: 20px; color: var(--mid); flex-shrink: 0; transition: transform 0.3s; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--terr); }
+  .faq-a {
+    font-size: 15px; color: var(--mid); line-height: 1.7;
+    max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s;
+    padding: 0;
+  }
+  .faq-item.open .faq-a { max-height: 300px; padding-bottom: 20px; }
+
+  /* CTA FOOTER */
+  .cta-footer {
+    background: var(--terr); padding: 80px 5vw; text-align: center;
+  }
+  .cta-footer .s-title { color: #fff; }
+  .cta-footer .s-sub { color: rgba(255,255,255,0.8); max-width: 500px; margin: 0 auto 36px; }
+  .btn-cta-white {
+    background: #fff; color: var(--terr);
+    border: none; border-radius: 8px;
+    padding: 16px 40px; font-size: 16px; font-weight: 600;
+    cursor: pointer; font-family: 'Inter', sans-serif;
+    text-decoration: none; display: inline-block;
+    transition: all 0.2s;
+  }
+  .btn-cta-white:hover { background: var(--terr-lt); transform: translateY(-2px); }
+  .cta-reassure { font-size: 13px; color: rgba(255,255,255,0.65); margin-top: 16px; }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink); color: rgba(255,255,255,0.5);
+    padding: 32px 5vw; text-align: center; font-size: 13px;
+  }
+  footer span { color: rgba(255,255,255,0.8); }
+
+  /* SCROLL REVEAL */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .flip-inner { transition: none; }
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; gap: 40px; padding: 48px 5vw 40px; }
+    .stats-bar .section-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; }
+    .stat-item:nth-child(2), .stat-item:last-child { border-bottom: none; }
+    .for-whom-grid, .reviews-grid, .pricing-grid { grid-template-columns: 1fr; }
+    .contents-grid { grid-template-columns: 1fr; }
+    .contents-aside { position: static; }
+    .phrases-demo { grid-template-columns: 1fr; }
+    .mini-cards { grid-template-columns: 1fr 1fr; }
+    .hero-visual { order: -1; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Embarazada en español</span>
+  <a href="#pricing" class="nav-cta">Купить PDF →</a>
+</nav>
+
+<!-- HERO -->
+<section style="padding: 0;">
+<div class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Цифровой самоучитель · 81 страница · PDF</p>
+    <h1 class="hero-title">Испанский для беременности и родов — <em>без паники</em></h1>
+    <p class="hero-sub">Практический разговорник для русскоязычных будущих мам. Уже через 10 минут вы сможете объяснить врачу, что болит, назвать срок беременности и понять ответ.</p>
+    <div class="hero-actions">
+      <a href="#pricing" class="btn-primary">Получить самоучитель — 1 490 ₽</a>
+      <a href="#demo" class="btn-ghost">Посмотреть содержание</a>
+    </div>
+    <div class="hero-trust">
+      <span class="trust-item"><span class="trust-dot"></span>Мгновенная доставка на e-mail</span>
+      <span class="trust-item"><span class="trust-dot"></span>150+ фраз с произношением</span>
+      <span class="trust-item"><span class="trust-dot"></span>Экстренный разговорник</span>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <p class="demo-label">Нажмите — переведите фразу</p>
+
+    <div class="flip-card" id="mainFlip" onclick="flipMain()">
+      <div class="flip-inner" id="mainFlipInner">
+        <div class="flip-front">
+          <p class="flip-lang">🇪🇸 Español</p>
+          <p class="flip-phrase" id="flipPhrase">Estoy embarazada.<br>Tengo doce semanas.</p>
+          <p class="flip-pron" id="flipPron">[Эстой эмбарасада. Тэнго досэ сэманас]</p>
+        </div>
+        <div class="flip-back">
+          <p class="flip-lang">🇷🇺 Перевод</p>
+          <p class="flip-ru" id="flipRu">Я беременна.<br>Срок — двенадцать недель.</p>
+        </div>
+      </div>
+    </div>
+    <p class="flip-hint">← нажмите ещё раз, чтобы увидеть другую фразу</p>
+
+    <div class="mini-cards">
+      <div class="mini-card">
+        <div class="mini-es">Me duele aquí.</div>
+        <div class="mini-ru">Здесь болит.</div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-es">¡Necesito ayuda!</div>
+        <div class="mini-ru">Мне нужна помощь!</div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-es">Quiero la epidural.</div>
+        <div class="mini-ru">Хочу эпидуральную.</div>
+      </div>
+      <div class="mini-card">
+        <div class="mini-es">¿Está bien el bebé?</div>
+        <div class="mini-ru">С малышом всё хорошо?</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="section-inner">
+    <div class="stat-item reveal">
+      <div class="stat-num">81</div>
+      <div class="stat-label">страница материала</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num">150+</div>
+      <div class="stat-label">фраз с произношением</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num">300+</div>
+      <div class="stat-label">слов в словаре</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num">7</div>
+      <div class="stat-label">глав + 14 приложений</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOR WHOM -->
+<section>
+<div class="section-inner">
+  <p class="s-eyebrow reveal">Для кого</p>
+  <h2 class="s-title reveal">Эта книга написана<br>для вас, если…</h2>
+  <div class="for-whom-grid">
+    <div class="whom-card reveal">
+      <span class="whom-icon">🤰</span>
+      <div class="whom-title">Вы беременны и живёте в испаноязычной стране?</div>
+      <div class="whom-desc">Или планируете рожать там. Даже если испанский вы учили пять лет назад — с этой книгой вы будете говорить с врачом уже сегодня.</div>
+    </div>
+    <div class="whom-card reveal">
+      <span class="whom-icon">😰</span>
+      <div class="whom-title">Боитесь не понять врача</div>
+      <div class="whom-desc">Не понимаете медицинских терминов? Стрессуете перед УЗИ? В книге есть готовые диалоги для каждой ситуации — от первого приёма до выписки.</div>
+    </div>
+    <div class="whom-card reveal">
+      <span class="whom-icon">🆘</span>
+      <div class="whom-title">Хотите быть готовы к экстренной ситуации</div>
+      <div class="whom-desc">Глава 4 и экстренный разговорник — это то, что нужно знать наизусть. Как вызвать скорую, что сказать в приёмном покое, как описать боль.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CONTENTS -->
+<section id="demo" style="background: var(--sand);">
+<div class="section-inner">
+  <p class="s-eyebrow reveal">Содержание</p>
+  <h2 class="s-title reveal">Всё, что нужно —<br>от первого визита до выписки</h2>
+
+  <div class="contents-grid">
+    <div class="chapter-list">
+      <div class="chapter-item reveal">
+        <div class="chapter-num">1</div>
+        <div class="chapter-text">
+          <div class="chapter-title">Выжить с минимальным испанским</div>
+          <div class="chapter-desc">100 слов, числа, срок беременности, чек-лист «за один вечер»</div>
+        </div>
+      </div>
+      <div class="chapter-item reveal">
+        <div class="chapter-num">2</div>
+        <div class="chapter-text">
+          <div class="chapter-title">Первый приём у гинеколога</div>
+          <div class="chapter-desc">Запись, симптомы, аллергии, полный диалог с врачом</div>
+        </div>
+      </div>
+      <div class="chapter-item reveal">
+        <div class="chapter-num">3</div>
+        <div class="chapter-text">
+          <div class="chapter-title">Анализы, обследования и УЗИ</div>
+          <div class="chapter-desc">Названия анализов, инструкции, вопросы про УЗИ, понимание результатов</div>
+        </div>
+      </div>
+      <div class="chapter-item reveal" style="border: 1.5px solid var(--terr); background: var(--terr-lt);">
+        <div class="chapter-num">4</div>
+        <div class="chapter-text">
+          <div class="chapter-title">Когда что-то пошло не так ⚡</div>
+          <div class="chapter-desc">Экстренные фразы, 112, описание боли, приёмный покой — самая важная глава</div>
+        </div>
+      </div>
+      <div class="chapter-item reveal">
+        <div class="chapter-num">5</div>
+        <div class="chapter-text">
+          <div class="chapter-title">Роды на испанском</div>
+          <div class="chapter-desc">Команды акушерки, этапы родов, эпидуральная, родильный зал</div>
+        </div>
+      </div>
+      <div class="chapter-item reveal">
+        <div class="chapter-num">6</div>
+        <div class="chapter-text">
+          <div class="chapter-title">После рождения малыша</div>
+          <div class="chapter-desc">Послеродовое отделение, грудное вскармливание, документы</div>
+        </div>
+      </div>
+      <div class="chapter-item reveal">
+        <div class="chapter-num">7</div>
+        <div class="chapter-text">
+          <div class="chapter-title">Испанский для мамы каждый день</div>
+          <div class="chapter-desc">Аптека, педиатр, карточки для повторения</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contents-aside">
+      <div class="contents-card reveal">
+        <p class="cc-title">И ещё 14 приложений, которые не найти в обычных учебниках</p>
+        <div class="cc-items">
+          <div class="cc-item"><span class="cc-check">✓</span>Словарь А–Я: 300+ слов с примерами</div>
+          <div class="cc-item"><span class="cc-check">✓</span>Экстренный разговорник (вырежьте!)</div>
+          <div class="cc-item"><span class="cc-check">✓</span>Мини-грамматика — 3 правила вместо учебника</div>
+          <div class="cc-item"><span class="cc-check">✓</span>Календарь обследований по неделям</div>
+          <div class="cc-item"><span class="cc-check">✓</span>Список в роддом с переводом</div>
+          <div class="cc-item"><span class="cc-check">✓</span>Питание при беременности</div>
+          <div class="cc-item"><span class="cc-check">✓</span>Испанская медицина: культурные особенности</div>
+          <div class="cc-item"><span class="cc-check">✓</span>Итоговый тест с разбором</div>
+          <div class="cc-item"><span class="cc-check">✓</span>Фразы по триместрам</div>
+          <div class="cc-item"><span class="cc-check">✓</span>Шкала боли + алфавит с произношением</div>
+        </div>
+        <p class="cc-pages">81 страница · PDF · навигация по кликабельному оглавлению</p>
+        <a href="#pricing" class="btn-buy btn-buy-white">Купить за 490 ₽ →</a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- PHRASES DEMO -->
+<section>
+<div class="section-inner">
+  <p class="s-eyebrow reveal">Примеры из книги</p>
+  <h2 class="s-title reveal">Фразы на каждый случай —<br>с произношением и переводом</h2>
+  <div class="phrases-demo">
+    <div class="phrase-row reveal">
+      <div class="pr-es">¡Necesito ayuda urgente!</div>
+      <div class="pr-pron">[Несесито айуда урхентэ!]</div>
+      <div class="pr-ru">Мне нужна срочная помощь!</div>
+      <span class="pr-tag">Экстренная</span>
+    </div>
+    <div class="phrase-row reveal">
+      <div class="pr-es">Tengo contracciones cada cinco minutos.</div>
+      <div class="pr-pron">[Тэнго контраксьонес када синко минутос]</div>
+      <div class="pr-ru">Схватки каждые пять минут.</div>
+      <span class="pr-tag">Роды</span>
+    </div>
+    <div class="phrase-row reveal">
+      <div class="pr-es">¿Puede hablar más despacio?</div>
+      <div class="pr-pron">[Пуэдэ абляр мас дэспасьо?]</div>
+      <div class="pr-ru">Можете говорить медленнее?</div>
+      <span class="pr-tag">Универсальная</span>
+    </div>
+    <div class="phrase-row reveal">
+      <div class="pr-es">Soy alérgica a la penicilina.</div>
+      <div class="pr-pron">[Сой алерхика а ла пенисилина]</div>
+      <div class="pr-ru">У меня аллергия на пенициллин.</div>
+      <span class="pr-tag">Первый приём</span>
+    </div>
+    <div class="phrase-row reveal">
+      <div class="pr-es">Quiero la epidural, por favor.</div>
+      <div class="pr-pron">[Кьеро ла эпидураль, пор фавор]</div>
+      <div class="pr-ru">Хочу эпидуральную, пожалуйста.</div>
+      <span class="pr-tag">Роды</span>
+    </div>
+    <div class="phrase-row reveal">
+      <div class="pr-es">El bebé no se mueve.</div>
+      <div class="pr-pron">[Эль бэбэ но сэ муэвэ]</div>
+      <div class="pr-ru">Малыш не двигается.</div>
+      <span class="pr-tag">Экстренная</span>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- REVIEWS -->
+<section style="background: var(--sand);">
+<div class="section-inner">
+  <p class="s-eyebrow reveal">Отзывы</p>
+  <h2 class="s-title reveal">Мамы, которые<br>уже были там</h2>
+  <div class="reviews-grid">
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Взяла книгу за неделю до родов. В родзале распечатала экстренный разговорник — акушерка видела, что я готовилась, и сама замедляла речь. Это работает.</p>
+      <div class="review-author">
+        <div class="review-avatar">АК</div>
+        <div>
+          <div class="review-name">Анна К.</div>
+          <div class="review-where">Барселона, Испания</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Самое ценное — экстренные фразы. Когда в 32 недели попала в urgencias, смогла объяснить про аллергию и назвать срок. Врачи были терпеливы, я — спокойна.</p>
+      <div class="review-author">
+        <div class="review-avatar">МС</div>
+        <div>
+          <div class="review-name">Мария С.</div>
+          <div class="review-where">Мадрид, Испания</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Диалоги с врачом — это золото. Перечитывала перед каждым приёмом, 5 минут — и ты готова. Теперь советую всем подругам, кто едет рожать в Испанию.</p>
+      <div class="review-author">
+        <div class="review-avatar">ОЛ</div>
+        <div>
+          <div class="review-name">Ольга Л.</div>
+          <div class="review-where">Валенсия, Испания</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="pricing-section">
+<div class="section-inner">
+  <p class="s-eyebrow reveal" style="text-align:center;">Цена</p>
+  <h2 class="s-title reveal" style="text-align:center;">Выберите свой вариант</h2>
+  <p class="s-sub reveal" style="margin: 0 auto; text-align: center;">Мгновенная доставка PDF на e-mail сразу после оплаты</p>
+
+
+    <div class="price-card-new highlight reveal">
+      <div class="price-badge-new">Хит продаж</div>
+      <p class="pc-name">Полный самоучитель</p>
+      <p class="pc-price">1490<span style="font-size:20px; color: var(--terr-lt);">₽</span></p>
+      <p class="pc-per">разовая оплата · бесплатные обновления</p>
+      <div class="pc-features">
+        <div class="pc-feature"><span class="pc-check">✓</span>Все 81 страница PDF</div>
+        <div class="pc-feature"><span class="pc-check">✓</span>7 глав + 14 приложений</div>
+        <div class="pc-feature"><span class="pc-check">✓</span>300+ слов в словаре</div>
+        <div class="pc-feature"><span class="pc-check">✓</span>15 диалогов с врачами</div>
+        <div class="pc-feature"><span class="pc-check">✓</span>Кликабельная навигация</div>
+        <div class="pc-feature"><span class="pc-check">✓</span>Бесплатные обновления</div>
+      </div>
+      <a href="#" class="btn-buy btn-buy-fill" onclick="alert('Здесь будет ссылка на Gumroad/Продамус')">Купить полную версию →</a>
+    </div>
+
+   
+      <a href="#" class="btn-buy btn-buy-outline" onclick="alert('Здесь будет ссылка на Gumroad/Продамус')">Купить VIP</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section>
+<div class="section-inner">
+  <p class="s-eyebrow reveal" style="text-align:center;">Вопросы</p>
+  <h2 class="s-title reveal" style="text-align:center;">Часто спрашивают</h2>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Как я получу книгу после оплаты?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Сразу после оплаты на указанный e-mail придёт письмо со ссылкой для скачивания PDF. Доставка мгновенная, доступ бессрочный.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        На каком устройстве можно читать?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">На любом — смартфон, планшет, компьютер. PDF открывается в любом браузере без дополнительных приложений. Удобнее всего — скачать и открыть в Adobe Acrobat или Apple Books: там работает кликабельное оглавление.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Нужен ли знание испанского для начала?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Нет. Книга написана с нуля — для тех, кто знает только «hola» и «gracias». Первая глава называется «Выжить с минимальным испанским» и за 10 минут даёт всё необходимое для первого визита к врачу.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Подойдёт ли книга, если я уже рожала?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Да. Главы 6 и 7 посвящены послеродовому периоду, грудному вскармливанию, педиатру и аптеке. Словарь и приложения актуальны для любого этапа жизни с малышом в Испании.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+       
+
+<!-- CTA FOOTER -->
+<section class="cta-footer">
+  <div class="section-inner">
+    <h2 class="s-title reveal">Не понимать врача<br>в такой момент — не вариант</h2>
+    <p class="s-sub reveal">Книга стоит меньше одного приёма у частного переводчика. И будет с вами на каждом визите.</p>
+    <a href="#pricing" class="btn-cta-white reveal">Получить самоучитель →</a>
+    <p class="cta-reassure">PDF · мгновенная доставка · возврат в течение 7 дней</p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <span>Embarazada en español</span> · Цифровой продукт · Все права защищены</p>
+</footer>
+
+<script>
+// FLIP CARD
+const phrases = [
+  {
+    es: 'Estoy embarazada.\nTengo doce semanas.',
+    pron: '[Эстой эмбарасада. Тэнго досэ сэманас]',
+    ru: 'Я беременна.\nСрок — двенадцать недель.'
+  },
+  {
+    es: '¿Puede repetir,\npor favor?',
+    pron: '[Пуэдэ рэпэтир пор фавор?]',
+    ru: 'Можете повторить,\nпожалуйста?'
+  },
+  {
+    es: 'Tengo mucho dolor\nen el vientre.',
+    pron: '[Тэнго мучо долор эн эль вьентрэ]',
+    ru: 'У меня сильная боль\nв животе.'
+  },
+  {
+    es: 'Quiero la epidural,\npor favor.',
+    pron: '[Кьеро ла эпидураль пор фавор]',
+    ru: 'Хочу эпидуральную,\nпожалуйста.'
+  },
+  {
+    es: '¿Todo está bien\ncon el bebé?',
+    pron: '[Тодо эста бьен кон эль бэбэ?]',
+    ru: 'С малышом\nвсё в порядке?'
+  },
+];
+let current = 0;
+let flipped = false;
+
+function flipMain() {
+  const card = document.getElementById('mainFlip');
+  if (!flipped) {
+    card.classList.add('flipped');
+    flipped = true;
+  } else {
+    card.classList.remove('flipped');
+    flipped = false;
+    current = (current + 1) % phrases.length;
+    setTimeout(() => {
+      const p = phrases[current];
+      document.getElementById('flipPhrase').innerHTML = p.es.replace('\n','<br>');
+      document.getElementById('flipPron').textContent = p.pron;
+      document.getElementById('flipRu').innerHTML = p.ru.replace('\n','<br>');
+    }, 300);
+  }
+}
+
+// FAQ
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// SCROLL REVEAL
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
